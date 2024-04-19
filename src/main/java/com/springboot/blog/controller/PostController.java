@@ -1,6 +1,7 @@
 package com.springboot.blog.controller;
 
 import com.springboot.blog.payload.PostDto;
+import com.springboot.blog.payload.PostResponse;
 import com.springboot.blog.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,9 @@ public class PostController {
 
     //Get all posts. The method also supports pagination and sorting. The default value of pageNo is 0 and pageSize is 10
     @GetMapping
-    public ResponseEntity<List<PostDto>> getAllPosts(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
-                                                     @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize){
-        return new ResponseEntity<>(postService.getAllPosts(pageNo,pageSize),HttpStatus.OK);
+    public PostResponse getAllPosts(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+                                    @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize){
+        return postService.getAllPosts(pageNo,pageSize);
     }
 
     @GetMapping("/{id}")
