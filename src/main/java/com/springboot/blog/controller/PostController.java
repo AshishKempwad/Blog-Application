@@ -24,9 +24,11 @@ public class PostController {
        return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 
+    //Get all posts. The method also supports pagination and sorting. The default value of pageNo is 0 and pageSize is 10
     @GetMapping
-    public ResponseEntity<List<PostDto>> getAllPosts(){
-        return new ResponseEntity<>(postService.getAllPosts(),HttpStatus.OK);
+    public ResponseEntity<List<PostDto>> getAllPosts(@RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+                                                     @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize){
+        return new ResponseEntity<>(postService.getAllPosts(pageNo,pageSize),HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
