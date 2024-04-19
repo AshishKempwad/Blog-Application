@@ -76,6 +76,12 @@ public class PostServiceImpl implements PostService {
         return mapToDto(updatedPost);
     }
 
+    @Override
+    public void deleteById(long id) {
+
+        postRepository.deleteById(id);
+    }
+
     //convert dto to entity
     private Post mapToEntity(PostDto postDto){
 
