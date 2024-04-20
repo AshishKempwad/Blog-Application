@@ -1,10 +1,9 @@
 package com.springboot.blog.payload;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
-public class CommentsDto {
+public class CommentDto {
     private long id;
     private String name;
     private String email;
